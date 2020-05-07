@@ -11,6 +11,13 @@
       ]
     },
     {
+      "library": "minty-bootstrap@1.0.4",
+      "destination": "wwwroot/lib/bootstrap/",
+      "files": [
+        "dist/minty.min.css"
+      ]
+    },
+    {
       "library": "bootstrap@4.4.1",
       "destination": "wwwroot/lib/bootstrap/",
       "files": [

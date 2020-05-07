@@ -25,10 +25,20 @@
     else
     {
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">
+                <div class="float-right font-weight-bold">
+                    <b>Register</b>
+                    <img alt="Register" src="~/images/register.png" class="w-25">
+                </div>
+            </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">
+                <div class="float-right font-weight-bold">
+                    <b>Login</b>
+                    <img alt="Login" src="~/images/newLogin.png" class="w-25">
+                </div>
+            </a>
         </li>
     }
 </ul>

@@ -39,4 +39,20 @@
     <ProjectReference Include="..\CooksAndBakes.Web.Infrastructure\CooksAndBakes.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\CooksAndBakes.Web.ViewModels\CooksAndBakes.Web.ViewModels.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\lib\bootstrap\dist\minty.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\bootstrap\dist\minty.min.css">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\dist\minty.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 </Project>
