@@ -3,38 +3,45 @@
     this.ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-3">Welcome to The Cookbook Community! </h1>
-    <p class="lead">The modern way of keeping record of you favourite recipes.</p>
-    @*<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>*@
-</div>
-
-<section class="py-5 bg-image-full"  style="background-image: url('https://res.cloudinary.com/dyk67xps4/image/upload/c_scale,w_1200/v1588875228/sweethp_tzx2cd.jpg');">
-    <!-- Put anything you want here! There is just a spacer below for demo purposes! -->
-    <div   style="height: 500px;width:400px;"></div>
-</section>
-
-
-<!-- Content section -->
-<section class="py-5">
-    <div class="container">
-        <h1>What stands behind the idea of The Cookbook Community?</h1>
+@if (User.Identity.IsAuthenticated == false)
+{
+    <div class="text-center">
+        <h1 class="display-3">Welcome to The Cookbook Community! </h1>
         <p class="lead">The modern way of keeping record of you favourite recipes.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat architecto commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet.</p>
+        @*<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>*@
     </div>
-</section>
 
-<!-- Image Section - set the background image for the header in the line below -->
-<section class="py-5 bg-image-full" style="background-image: url('https://res.cloudinary.com/dyk67xps4/image/upload/c_scale,w_1200/v1588878034/ribs_ph7eli.jpg');">
-    <!-- Put anything you want here! There is just a spacer below for demo purposes! -->
-    <div style="height: 500px;width:400px;"></div>
-</section>
+    <section class="py-5 bg-image-full" style="background-image: url('https://res.cloudinary.com/dyk67xps4/image/upload/c_scale,w_1200/v1588875228/sweethp_tzx2cd.jpg');">
+        <!-- Put anything you want here! There is just a spacer below for demo purposes! -->
+        <div style="height: 500px;width:400px;"></div>
+    </section>
 
-<!-- Content section -->
-<section class="py-5">
-    <div class="container">
-        <h1>Section Heading</h1>
-        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat architecto commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet.</p>
-    </div>
-</section>
+
+    <!-- Content section -->
+    <section class="py-5">
+        <div class="container">
+            <h1>What stands behind the idea of The Cookbook Community?</h1>
+            <p class="lead">The modern way of keeping record of you favourite recipes.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat architecto commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet.</p>
+        </div>
+    </section>
+
+    <!-- Image Section - set the background image for the header in the line below -->
+    <section class="py-5 bg-image-full" style="background-image: url('https://res.cloudinary.com/dyk67xps4/image/upload/c_scale,w_1200/v1588878034/ribs_ph7eli.jpg');">
+        <!-- Put anything you want here! There is just a spacer below for demo purposes! -->
+        <div style="height: 500px;width:400px;"></div>
+    </section>
+
+    <!-- Content section -->
+    <section class="py-5">
+        <div class="container">
+            <h1>Section Heading</h1>
+            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat architecto commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet.</p>
+        </div>
+    </section>
+}
+else
+{
+    <h1>Thie page is under construction! Here it is supposed to have : bar with all recipe categories, ViewComponent with recenttly added Recipes etc.</h1>
+}
