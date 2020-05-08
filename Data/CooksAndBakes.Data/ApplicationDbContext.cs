@@ -26,6 +26,18 @@
 
         public DbSet<Setting> Settings { get; set; }
 
+        public DbSet<Category> Categories { get; set; }
+
+        public DbSet<Recipe> Recipes { get; set; }
+
+        public DbSet<Image> Images { get; set; }
+
+        public DbSet<Comment> Comments { get; set; }
+
+        public DbSet<Vote> Votes { get; set; }
+
+        public DbSet<UserRecipe> UserRecipes { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
@@ -72,6 +84,19 @@
             {
                 foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
             }
+
+            builder.Entity<UserRecipe>()
+                .HasKey(pm => new { pm.UserId, pm.RecipeId });
+
+            builder.Entity<UserRecipe>()
+                .HasOne(u => u.User)
+                .WithMany(r => r.UserRecipes)
+                .HasForeignKey(u => u.UserId);
+
+            builder.Entity<UserRecipe>()
+                .HasOne(r => r.Recipe)
+                .WithMany(u => u.UserRecipes)
+                .HasForeignKey(r => r.RecipeId);
         }
 
         private static void SetIsDeletedQueryFilter<T>(ModelBuilder builder)
