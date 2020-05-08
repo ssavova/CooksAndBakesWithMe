@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\CooksAndBakes.Data.Common\CooksAndBakes.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\CooksAndBakes.Data.Models\CooksAndBakes.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Web\CooksAndBakes.Web.ViewModels\CooksAndBakes.Web.ViewModels.csproj" />
     <ProjectReference Include="..\CooksAndBakes.Services.Mapping\CooksAndBakes.Services.Mapping.csproj" />
   </ItemGroup>
 
