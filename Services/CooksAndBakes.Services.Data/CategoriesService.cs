@@ -17,6 +17,16 @@
             this.categoriesRepository = categoriesRepository;
         }
 
+        public List<CategoryDropDownViewModel> GetAll()
+        {
+            return this.categoriesRepository.All().Select(c => new CategoryDropDownViewModel
+            {
+                Id = c.Id,
+                Title = c.Title,
+                DefaultImageUrl = c.DefaultImageUrl,
+            }).ToList();
+        }
+
         public List<T> GetCategoriesName<T>()
         {
             return this.categoriesRepository.All()
@@ -26,6 +36,19 @@
         public List<CategoryMenuViewModel> OrderCategories(List<CategoryMenuViewModel> collection, params string[] orderWay)
         {
             var orderedCollection = new List<CategoryMenuViewModel>();
+
+            foreach (var word in orderWay)
+            {
+                var searched = collection.Where(o => o.Title == word).FirstOrDefault();
+                orderedCollection.Add(searched);
+            }
+
+            return orderedCollection;
+        }
+
+        public List<CategoryDropDownViewModel> OrderDropDown(List<CategoryDropDownViewModel> collection, params string[] orderWay)
+        {
+            var orderedCollection = new List<CategoryDropDownViewModel>();
 
             foreach (var word in orderWay)
             {
