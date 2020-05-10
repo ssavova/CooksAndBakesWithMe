@@ -50,7 +50,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Categories\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 

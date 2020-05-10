@@ -1,9 +1,12 @@
 ﻿namespace CooksAndBakes.Services.Data
 {
     using System.Collections.Generic;
+    using CooksAndBakes.Web.ViewModels.Categories;
 
     public interface ICategoriesService
     {
-        IEnumerable<T> GetCategoriesName<T>();
+        List<T> GetCategoriesName<T>();
+
+        List<CategoryMenuViewModel> OrderCategories(List<CategoryMenuViewModel> collection, params string[] orderWay);
     }
 }

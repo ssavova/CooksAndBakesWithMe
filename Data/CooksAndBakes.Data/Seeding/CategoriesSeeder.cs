@@ -23,11 +23,11 @@
                 ("Soups", "https://res.cloudinary.com/dyk67xps4/image/upload/v1588964594/Soups_exh4wk.jpg"),
                 ("Salads", "https://res.cloudinary.com/dyk67xps4/image/upload/v1588964629/Salads_ngsrxj.jpg"),
                 ("Main Courses", "https://res.cloudinary.com/dyk67xps4/image/upload/v1588964658/Main_Courses_kjx3ij.jpg"),
+                ("Pizza", "https://res.cloudinary.com/dyk67xps4/image/upload/v1588964817/Pizza_a9gtcy.jpg"),
+                ("Pasta", "https://res.cloudinary.com/dyk67xps4/image/upload/v1588964842/Pasta_psfqlg.jpg"),
                 ("Pastry", "https://res.cloudinary.com/dyk67xps4/image/upload/v1588964703/Pastry_lzaycn.jpg"),
                 ("Desserts", "https://res.cloudinary.com/dyk67xps4/image/upload/v1588964738/Desserts_kt4n42.jpg"),
                 ("Cocktails", "https://res.cloudinary.com/dyk67xps4/image/upload/v1588964786/Cocktails_ke4gqo.jpg"),
-                ("Pizza", "https://res.cloudinary.com/dyk67xps4/image/upload/v1588964817/Pizza_a9gtcy.jpg"),
-                ("Pasta", "https://res.cloudinary.com/dyk67xps4/image/upload/v1588964842/Pasta_psfqlg.jpg"),
             };
 
             foreach (var category in categories)

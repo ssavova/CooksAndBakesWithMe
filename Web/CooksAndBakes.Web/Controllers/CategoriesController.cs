@@ -12,5 +12,10 @@
         {
             this.categoriesService = service;
         }
+
+        public IActionResult GetAll(string id)
+        {
+            return this.View();
+        }
     }
 }

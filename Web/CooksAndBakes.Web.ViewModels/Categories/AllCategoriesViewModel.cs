@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CooksAndBakes.Web.ViewModels.Categories
+﻿namespace CooksAndBakes.Web.ViewModels.Categories
 {
+    using System.Collections.Generic;
+
     public class AllCategoriesViewModel
     {
         public IEnumerable<CategoryMenuViewModel> Categories { get; set; }

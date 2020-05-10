@@ -16,13 +16,14 @@
 
         public IViewComponentResult Invoke()
         {
-            var viewModel = new AllCategoriesViewModel()
-            {
-                Categories = this.categoryService.GetCategoriesName<CategoryMenuViewModel>()
-            };
+            var unorderedCollection = this.categoryService.GetCategoriesName<CategoryMenuViewModel>();
+
+            var orderedCollection = this.categoryService.OrderCategories(unorderedCollection, "Starters", "Dressings", "Soups", "Salads", "Main Courses", "Pizza", "Pasta", "Pastry", "Desserts", "Cocktails");
+
+            var viewModel = new AllCategoriesViewModel() { Categories = orderedCollection };
 
             return this.View(viewModel);
         }
 
-}
+    }
 }

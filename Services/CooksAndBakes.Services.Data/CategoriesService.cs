@@ -17,10 +17,23 @@
             this.categoriesRepository = categoriesRepository;
         }
 
-        public IEnumerable<T> GetCategoriesName<T>()
+        public List<T> GetCategoriesName<T>()
         {
             return this.categoriesRepository.All()
                 .To<T>().ToList();
+        }
+
+        public List<CategoryMenuViewModel> OrderCategories(List<CategoryMenuViewModel> collection, params string[] orderWay)
+        {
+            var orderedCollection = new List<CategoryMenuViewModel>();
+
+            foreach (var word in orderWay)
+            {
+                var searched = collection.Where(o => o.Title == word).FirstOrDefault();
+                orderedCollection.Add(searched);
+            }
+
+            return orderedCollection;
         }
     }
 }
