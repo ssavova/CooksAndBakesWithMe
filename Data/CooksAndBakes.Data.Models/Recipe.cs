@@ -17,8 +17,10 @@
             this.UserRecipes = new HashSet<UserRecipe>();
         }
 
+        [Required]
         public string Title { get; set; }
 
+        [Required]
         public string CategoryId { get; set; }
 
         public virtual Category Category { get; set; }
@@ -26,8 +28,10 @@
         [Range(1, 5)]
         public int Level { get; set; }
 
+        [Required]
         public string Products { get; set; }
 
+        [Required]
         public string Description { get; set; }
 
         [Required]

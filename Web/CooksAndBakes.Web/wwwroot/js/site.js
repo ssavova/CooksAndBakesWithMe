@@ -68,6 +68,27 @@ $("#level-of-complexity").focusout(function () {
     }
 });
 
+document.querySelectorAll(".customize-file-upload-button").forEach(function (button) {
+    const hiddenInput = button.parentElement.querySelector(".file-input");
+    const label = button.parentElement.querySelector(".file-upload-label");
+    const defaultLabelText = 'No file(s) selected.';
+
+    label.textContent = defaultLabelText;
+    label.title = defaultLabelText;
+
+    button.addEventListener('click', function () {
+        hiddenInput.click();
+    });
+
+    hiddenInput.addEventListener('change', function () {
+        const fileNameList = Array.from(hiddenInput.files).map(function (file) {
+            return file.name;
+        });
+
+        label.textContent = fileNameList.join(', ') || defaultLabelText;
+        label.title = label.textContent;
+    });
+});
 
 //$("#image-input").focusout(function () {
 //    let imageUrl = $("#image-input").val();

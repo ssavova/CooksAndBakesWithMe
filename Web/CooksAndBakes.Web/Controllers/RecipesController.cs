@@ -28,5 +28,19 @@
 
             return this.View(viewModel);
         }
+
+        [Authorize]
+        [HttpPost]
+        public IActionResult Add(RecipeCreateInputModel input)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(input);
+            }
+
+            //Create Recipe and Save it to db
+
+            return this.Redirect("/");
+        }
     }
 }

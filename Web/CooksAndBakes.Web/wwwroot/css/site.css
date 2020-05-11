@@ -12,6 +12,7 @@ a.navbar-brand {
 html {
     font-size: 14px;
 }
+
 @media (min-width: 768px) {
     html {
         font-size: 16px;
@@ -21,6 +22,7 @@ html {
 .border-top {
     border-top: 1px solid #e5e5e5;
 }
+
 .border-bottom {
     border-bottom: 1px solid #e5e5e5;
 }
@@ -45,6 +47,7 @@ body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
 }
+
 .footer {
     position: absolute;
     bottom: 0;
@@ -55,14 +58,14 @@ body {
     line-height: 60px; /* Vertically center the text there */
 }
 
-#categoryMenu{
-    font-family:'Arial Rounded MT';
-    font-size:x-large;
-    color:black;
+#categoryMenu {
+    font-family: 'Arial Rounded MT';
+    font-size: x-large;
+    color: black;
 }
 
 .customizeLine {
-    border:1px groove black; 
+    border: 1px groove black;
 }
 
 
@@ -74,5 +77,39 @@ body {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.file-upload {
+    display: inline-flex;
+    align-items: center;
+    font-size: 15px;
+}
 
+.file-input {
+    display: none;
+}
 
+.customize-file-upload-button {
+    -webkit-appearance: none;
+    background: #78C2AD;
+    border: 2px solid #317C66;
+    border-radius: 4px;
+    outline: none;
+    padding: 0.5em 0.8em;
+    margin-right: 15px;
+    color: #ffffff;
+    font-size: 1em;
+    font-family: sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.customize-file-upload-button:active {
+    background: #317C66
+}
+
+.file-upload-label {
+    max-width:250px;
+    font-size:0.95em;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    white-space:nowrap;
+}

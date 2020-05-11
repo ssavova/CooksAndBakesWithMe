@@ -17,31 +17,32 @@
 
 ﻿<h1 class="text-center mt-2">@this.ViewData["Title"]</h1>
 <div class="row mt-4 mb-4">
-    <div id="card" class="card col-6 col-lg-3 game-card h-100 m-auto ">
+    <div id="card" class="card col-6 col-lg-3 game-card h-100 mt-3 mr-0">
         <img id="card-image"
              src="https://www.impact-media.be/wp-content/uploads/2019/09/placeholder-1-e1533569576673-960x960.png"
              class="card-img-top img-fluid card-image mt-2">
         <div class="card-body">
             <h5 id="card-name" class="card-title text-center" data-toggle="tooltip" data-placement="bottom"
                 title="Description:<br>Placeholder.">
-                Placeholder
+                Recipe Name
             </h5>
             <ul class="list-group list-group-flush">
                 <li id="card-keyword" class="list-group-item text-center">Placeholder</li>
                 <li class="list-group-item text-center" id="complexity">
                     <img src="~/images/chef.png" id="h1" />
                     <img src="~/images/chef.png" id="h2" />
-                    <img src="~/images/chef.png" id="h3"/>
-                    <img src="~/images/chef.png" id="h4"/>
-                    <img src="~/images/chef.png" id="h5"/>
+                    <img src="~/images/chef.png" id="h3" />
+                    <img src="~/images/chef.png" id="h4" />
+                    <img src="~/images/chef.png" id="h5" />
                 </li>
             </ul>
         </div>
     </div>
-    <form class="col-6 col-lg-9" method="post">
+    <form class="col-6 col-lg-9" method="post" asp-controller="Recipes" asp-action="Add" enctype="multipart/form-data">
         <div class="form-group">
-            <label asp>Title</label>
-            <input name="name" type="text" class="form-control" id="name-input">
+            <label asp-for="Title"></label>
+            <input asp-for="Title" class="form-control" id="name-input" />
+            <span asp-validation-for="Title" class="text-danger"></span>
         </div>
 
         <div class="form-group">
@@ -50,33 +51,42 @@
             <span asp-validation-for="CategoryId" class="text-danger"></span>
         </div>
 
-        <div>
+        <div class="form-group">
             <label asp-for="Level">Complexity (between 1 and 5)</label>
-            <input  asp-for="Level" class="form-control" id="level-of-complexity" min="1" max="5" />
+            <input asp-for="Level" class="form-control" id="level-of-complexity" min="1" max="5" />
             <span asp-validation-for="Level" class="text-danger"></span>
         </div>
 
         <div class="form-group">
-            <label for="attack-input">Attack</label>
-            <input name="attack" type="number" class="form-control" id="attack-input">
+            <label asp-for="Products"></label>
+            <textarea asp-for="Products" class="form-control" placeholder="Please write down the needed products for the recipe in the following format: milk - 150 ml ..."></textarea>
+            <span asp-validation-for="Products" class="text-danger"></span>
         </div>
+
         <div class="form-group">
-            <label for="health-input">Health</label>
-            <input name="health" type="number" class="form-control" id="health-input">
+            <label asp-for="Description"></label>
+            <textarea asp-for="Description" class="form-control" placeholder="Please explain thoroughly how you prepare this delicious meal."></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
         </div>
-        <div class="form-group">
-            <label for="description-input">Description</label>
-            <textarea name="description" class="form-control" id="description-input"></textarea>
+
+
+        <div class="font-weight-bold mb-2 mt-2">
+            Have you got images of this recipe? Do share the best of them with us!
         </div>
-        <button type="submit" class="btn btn-block btn-primary">Create</button>
+
+    <div class="file-upload form-group">
+        <label asp-for="RecipeImages" hidden></label>
+        <input class="file-input" type="file" asp-for="RecipeImages"  multiple/>
+        <button class="customize-file-upload-button" type="button">Choose File(s)</button>
+        <span class="file-upload-label"></span>
+    </div>
+
+
+        <hr .customizeLine/>
+        <div class="text-center">
+            <input type="submit" class="btn btn-primary " value="Create Recipe!" />
+        </div>
     </form>
 </div>
 
-<script>
 
-    $("#image-input").focusout(function () {
-        let category = $("#image-input").text();
-
-        $('#card-keyword').text(category);
-    })
-</script>

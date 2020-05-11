@@ -2,6 +2,8 @@
 {
     using System.Reflection;
 
+    using CloudinaryDotNet;
+
     using CooksAndBakes.Data;
     using CooksAndBakes.Data.Common;
     using CooksAndBakes.Data.Common.Repositories;
@@ -61,6 +63,16 @@
             services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<ICategoriesService, CategoriesService>();
             services.AddTransient<IRecipesService, RecipesService>();
+
+            // Add Cludinary API
+            Account account = new Account(
+                this.configuration["Cloudinary:CloudName"],
+                this.configuration["Cloudinary:AppKey"],
+                this.configuration["Cloudinary:AppSecret"]);
+
+            Cloudinary cloudinary = new Cloudinary(account);
+
+            services.AddSingleton(cloudinary);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
