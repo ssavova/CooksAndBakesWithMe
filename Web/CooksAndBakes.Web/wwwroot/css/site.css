@@ -65,3 +65,14 @@ body {
     border:1px groove black; 
 }
 
+
+.level {
+    filter: invert(80%) sepia(10%) saturate(1174%) hue-rotate(112deg) brightness(90%) contrast(84%);
+}
+
+.card:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+

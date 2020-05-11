@@ -17,10 +17,10 @@
 
 ﻿<h1 class="text-center mt-2">@this.ViewData["Title"]</h1>
 <div class="row mt-4 mb-4">
-    <div id="card" class="card col-6 col-lg-3 game-card h-100 m-auto">
+    <div id="card" class="card col-6 col-lg-3 game-card h-100 m-auto ">
         <img id="card-image"
              src="https://www.impact-media.be/wp-content/uploads/2019/09/placeholder-1-e1533569576673-960x960.png"
-             class="card-img-top img-fluid card-image">
+             class="card-img-top img-fluid card-image mt-2">
         <div class="card-body">
             <h5 id="card-name" class="card-title text-center" data-toggle="tooltip" data-placement="bottom"
                 title="Description:<br>Placeholder.">
@@ -28,8 +28,12 @@
             </h5>
             <ul class="list-group list-group-flush">
                 <li id="card-keyword" class="list-group-item text-center">Placeholder</li>
-                <li class="list-group-item">
-                    <span id="card-attack" class="attack-stat">0</span><span id="card-health" class="health-stat">0</span>
+                <li class="list-group-item text-center" id="complexity">
+                    <img src="~/images/chef.png" id="h1" />
+                    <img src="~/images/chef.png" id="h2" />
+                    <img src="~/images/chef.png" id="h3"/>
+                    <img src="~/images/chef.png" id="h4"/>
+                    <img src="~/images/chef.png" id="h5"/>
                 </li>
             </ul>
         </div>
@@ -46,12 +50,12 @@
             <span asp-validation-for="CategoryId" class="text-danger"></span>
         </div>
 
-        <div class="form-group">
-            <label for="image-input">Image URL</label>
-            <input name="image" type="text" class="form-control" id="image-input">
+        <div>
+            <label asp-for="Level">Complexity (between 1 and 5)</label>
+            <input  asp-for="Level" class="form-control" id="level-of-complexity" min="1" max="5" />
+            <span asp-validation-for="Level" class="text-danger"></span>
         </div>
 
-        
         <div class="form-group">
             <label for="attack-input">Attack</label>
             <input name="attack" type="number" class="form-control" id="attack-input">

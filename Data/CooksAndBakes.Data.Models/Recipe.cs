@@ -23,6 +23,9 @@
 
         public virtual Category Category { get; set; }
 
+        [Range(1, 5)]
+        public int Level { get; set; }
+
         public string Products { get; set; }
 
         public string Description { get; set; }

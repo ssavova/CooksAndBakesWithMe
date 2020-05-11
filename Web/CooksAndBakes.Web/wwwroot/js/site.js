@@ -32,6 +32,41 @@ $("image-input").focusout(
     })
     .trigger("change"));
 
+$("#level-of-complexity").focusout(function () {
+    let value = $("#level-of-complexity").val();
+
+    if (value == 1) {
+        $("#h1").addClass("level");
+        $("#h2").removeClass("level");
+        $("#h3").removeClass("level");
+        $("#h4").removeClass("level");
+        $("#h5").removeClass("level");
+    } else if (value == 2) {
+        $("#h1").addClass("level");
+        $("#h2").addClass("level");
+        $("#h3").removeClass("level");
+        $("#h4").removeClass("level");
+        $("#h5").removeClass("level");
+    } else if (value == 3) {
+        $("#h1").addClass("level");
+        $("#h2").addClass("level");
+        $("#h3").addClass("level");
+        $("#h4").removeClass("level");
+        $("#h5").removeClass("level");
+    } else if (value == 4) {
+        $("#h1").addClass("level");
+        $("#h2").addClass("level");
+        $("#h3").addClass("level");
+        $("#h4").addClass("level");
+        $("#h5").removeClass("level");
+    } else if (value == 5) {
+        $("#h1").addClass("level");
+        $("#h2").addClass("level");
+        $("#h3").addClass("level");
+        $("#h4").addClass("level");
+        $("#h5").addClass("level");
+    }
+});
 
 
 //$("#image-input").focusout(function () {

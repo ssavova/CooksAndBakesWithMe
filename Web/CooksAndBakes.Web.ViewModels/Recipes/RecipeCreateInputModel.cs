@@ -13,6 +13,8 @@ namespace CooksAndBakes.Web.ViewModels.Recipes
         [Display(Name ="Category")]
         public string CategoryId { get; set; }
 
+        public int Level { get; set; }
+
         public IEnumerable<CategoryDropDownViewModel> Categories { get; set; }
     }
 }
