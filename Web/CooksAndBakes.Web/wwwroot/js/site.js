@@ -18,20 +18,6 @@ $("#name-input").focusout(function () {
 
 })
 
-$("image-input").focusout(
-    $("select")
-    .change(function () {
-        let imageUrl = '';
-        let categoryname = '';
-        $("select option:selected").each(function () {
-            imageUrl = $(this).val();
-            categoryname = $(this).text();
-        });
-        $("#card-image").attr('src', imageUrl);
-        $('#card-keyword').text(categoryname);
-    })
-    .trigger("change"));
-
 $("#level-of-complexity").focusout(function () {
     let value = $("#level-of-complexity").val();
 

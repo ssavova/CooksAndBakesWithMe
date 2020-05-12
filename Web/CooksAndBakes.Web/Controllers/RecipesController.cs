@@ -23,7 +23,7 @@
 
             var viewModel = new RecipeCreateInputModel()
             {
-                Categories = orderDropDown
+                Categories = orderDropDown,
             };
 
             return this.View(viewModel);
