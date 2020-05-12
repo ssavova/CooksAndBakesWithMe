@@ -1,10 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CooksAndBakes.Services.Data
+﻿namespace CooksAndBakes.Services.Data
 {
+    using System.Threading.Tasks;
+    using CooksAndBakes.Data.Models;
+    using Microsoft.AspNetCore.Http;
+
     public interface IRecipesService
     {
+        Task<Image> CreateImage(string recipeId, IFormFile file);
+
+        Task<string> CreateRecipe(string title, string categoryId, int level, string products, string description, string userId);
+
+        Task AddRecipeToUser(string recipeId, string userId);
+
+        Task<string> UploadImagesForRecipe(IFormFile file);
+
+        Recipe ReturnRecipe(string id);
     }
 }

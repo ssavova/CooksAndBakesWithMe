@@ -1,13 +1,11 @@
-﻿using CooksAndBakes.Data.Models;
-using CooksAndBakes.Web.ViewModels.Categories;
-using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-
-namespace CooksAndBakes.Web.ViewModels.Recipes
+﻿namespace CooksAndBakes.Web.ViewModels.Recipes
 {
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+
+    using CooksAndBakes.Web.ViewModels.Categories;
+    using Microsoft.AspNetCore.Http;
+
     public class RecipeCreateInputModel
     {
         [Display(Name ="Recipe Name")]
