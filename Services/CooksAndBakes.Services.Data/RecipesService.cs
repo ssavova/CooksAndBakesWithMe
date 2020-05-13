@@ -113,5 +113,18 @@
         {
             return this.recipesRepository.All().Where(r => r.Id == id).FirstOrDefault();
         }
+
+        public List<string> ReturnImageUrls(string recipeId)
+        {
+            var result = new List<string>();
+            var images = this.recipesRepository.All().Where(r => r.Id == recipeId).Select(r => r.RecipeImages).FirstOrDefault();
+
+            foreach (var url in images)
+            {
+                result.Add(url.ImageUrl);
+            }
+
+            return result;
+        }
     }
 }

@@ -13,5 +13,7 @@
         List<CategoryDropDownViewModel> GetAll();
 
         List<CategoryDropDownViewModel> OrderDropDown(List<CategoryDropDownViewModel> collection, params string[] orderWay);
+
+        string ReturnCategoryName(string categoryId);
     }
 }

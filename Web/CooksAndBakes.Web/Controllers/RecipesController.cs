@@ -5,6 +5,7 @@
     using CooksAndBakes.Data.Models;
     using CooksAndBakes.Services.Data;
     using CooksAndBakes.Web.ViewModels.Recipes;
+    using Ganss.XSS;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
@@ -66,10 +67,39 @@
             return this.RedirectToAction(nameof(this.ById), new { id = recipeId });
         }
 
-        public IActionResult ById(string id)
+        [Authorize]
+        public async Task<IActionResult> ById(string id)
         {
-            // viewModel
+            var recipe = this.recipesService.ReturnRecipe(id);
+            var user = await this.userManager.GetUserAsync(this.User);
+
+            var viewModel = new FullRecipeViewModel
+            {
+                RecipeId = recipe.Id,
+                UserId = recipe.UserId,
+                Username = user.UserName,
+                Title = recipe.Title,
+                Level = recipe.Level,
+                CreatedOn = recipe.CreatedOn,
+                CategoryName = this.categoriesService.ReturnCategoryName(recipe.CategoryId),
+                Products = new HtmlSanitizer().Sanitize(recipe.Products),
+                Description = new HtmlSanitizer().Sanitize(recipe.Description),
+                ImageUrls = this.recipesService.ReturnImageUrls(recipe.Id),
+            };
+
+            return this.View(viewModel);
+        }
+
+        public IActionResult Edit()
+        {
+            //viewModel
             return this.View();
+        }
+
+        [HttpPost]
+        public IActionResult Edit(string inputModel)
+        {
+            return this.RedirectToAction(nameof(this.ById), new { id = " " });
         }
     }
 }

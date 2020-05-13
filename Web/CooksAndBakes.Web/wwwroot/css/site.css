@@ -113,3 +113,13 @@ body {
     overflow:hidden;
     white-space:nowrap;
 }
+
+#ingredients-page {
+    background-color: antiquewhite;
+    font-family: 'Brush Script MT';
+    border-radius: 25px;
+    transform-origin: bottom left;
+    transform: rotate(7deg);
+}
+
+

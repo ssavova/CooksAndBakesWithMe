@@ -1,5 +1,6 @@
 ﻿namespace CooksAndBakes.Services.Data
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
     using CooksAndBakes.Data.Models;
     using Microsoft.AspNetCore.Http;
@@ -15,5 +16,7 @@
         Task<string> UploadImagesForRecipe(IFormFile file);
 
         Recipe ReturnRecipe(string id);
+
+        List<string> ReturnImageUrls(string recipeId);
     }
 }

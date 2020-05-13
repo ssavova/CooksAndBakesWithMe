@@ -58,5 +58,10 @@
 
             return orderedCollection;
         }
+
+        public string ReturnCategoryName(string categoryId)
+        {
+            return this.categoriesRepository.All().Where(c => c.Id == categoryId).Select(c => c.Title).FirstOrDefault();
+        }
     }
 }
