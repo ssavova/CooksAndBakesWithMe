@@ -2,6 +2,7 @@
 
 @{
     this.ViewData["Title"] = "View Full Recipe";
+    var count = 0;
 }
 
 <div class="">
@@ -9,9 +10,9 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="text-center mt-3 mb-3">
-                    <h4>@Model.Title</h4>
+                    <h2 class="font-weight-bold">@Model.Title</h2>
                     <img src="~/images/recipe-author.png" /> @Model.Username
-                    <i class="far fa-clock"></i> @Model.CreatedOn.ToString("O")
+                    <i class="fa fa-calendar"></i> @Model.CreatedOn.ToString("D")
                 </div>
             </div>
         </div>
@@ -35,9 +36,20 @@
                     <div class="carousel-inner">
                         @foreach (var imageUrl in Model.ImageUrls)
                         {
-                            <div class="carousel-item active">
-                                <img class="d-block w-100" src="@imageUrl" alt="">
-                            </div>
+                            @if (count == 0)
+                            {
+                                <div class="carousel-item active">
+                                    <img class="d-block w-100" src="@imageUrl" alt="">
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="@imageUrl" alt="">
+                                </div>
+                            }
+
+                            count++;
                         }
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -90,9 +102,15 @@
     </div>
 </div>
 
+@*<div id="customize-edit-recipe">
+    <input type="submit" class="btn btn-primary " value="Edit Recipe" />
+</div>*@
+
 
 @section Scripts{
-    function(){
+
+    <script>
+    (function(){
     if (@Model.Level == 1) {
     $("#h1").addClass("level");
     } else if (@Model.Level == 2) {
@@ -114,6 +132,8 @@
     $("#h4").addClass("level");
     $("#h5").addClass("level");
     }
-    }();
+    }) ();
+
+    </script>
 }
 
