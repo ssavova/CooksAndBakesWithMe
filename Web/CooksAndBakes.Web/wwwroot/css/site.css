@@ -102,22 +102,22 @@ body {
     cursor: pointer;
 }
 
-.customize-file-upload-button:active {
-    background: #317C66
-}
+    .customize-file-upload-button:active {
+        background: #317C66
+    }
 
 .file-upload-label {
-    max-width:250px;
-    font-size:0.95em;
-    text-overflow:ellipsis;
-    overflow:hidden;
-    white-space:nowrap;
+    max-width: 250px;
+    font-size: 0.95em;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 #ingredients-page {
     background-color: antiquewhite;
     font-family: 'Brush Script MT';
-    font-size: large;
+    font-size: x-large;
     border-radius: 25px;
     transform-origin: bottom left;
     transform: rotate(7deg);
@@ -142,3 +142,52 @@ body {
         border: 2px solid #146C53;
     }
 
+.recipe-thumb {
+    max-width: 300px;
+    max-height: 300px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: auto;
+}
+
+    .recipe-thumb img {
+        width: 100%;
+        vertical-align: middle;
+    }
+
+.recipe-name-style {
+    font-size: 40px;
+    color: black;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-family: Mistral,cursive
+}
+
+.fullrecipe-button {
+    display: inline-block;
+    font-size: 13px;
+    color: black;
+    border: 2px solid #78C2AD;
+    text-transform: capitalize;
+    padding: 13px 34px;
+    font-weight: 500;
+    font-family: sans-serif;
+    -webkit-border-radius: 30px;
+    border-radius: 30px;
+}
+
+    .fullrecipe-button:hover {
+        background: #78C2AD;
+        color: white;
+    }
+
+
+#delete-content {
+    position:relative;
+}
+
+#delete-recipe-button{
+    position:absolute;
+    top:0px;
+    right:0px;
+}

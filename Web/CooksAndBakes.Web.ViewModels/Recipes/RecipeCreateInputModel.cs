@@ -26,6 +26,7 @@
         public string Description { get; set; }
 
         [Display(Name ="Images")]
+        [Required]
         public IEnumerable<IFormFile> RecipeImages { get; set; }
 
         public IEnumerable<CategoryDropDownViewModel> Categories { get; set; }

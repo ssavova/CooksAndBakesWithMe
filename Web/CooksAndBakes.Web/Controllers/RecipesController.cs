@@ -64,13 +64,13 @@
 
             await this.recipesService.AddRecipeToUser(recipeId, user.Id);
 
-            return this.RedirectToAction(nameof(this.ById), new { id = recipeId });
+            return this.RedirectToAction(nameof(this.ById), new { recipeId = recipeId });
         }
 
         [Authorize]
-        public async Task<IActionResult> ById(string id)
+        public async Task<IActionResult> ById(string recipeId)
         {
-            var recipe = this.recipesService.ReturnRecipe(id);
+            var recipe = this.recipesService.ReturnRecipe(recipeId);
             var user = await this.userManager.GetUserAsync(this.User);
 
             var viewModel = new FullRecipeViewModel
@@ -90,6 +90,19 @@
             return this.View(viewModel);
         }
 
+        [Authorize]
+        public async Task<IActionResult> UserRecipes()
+        {
+            var currentlyLoggedUser = await this.userManager.GetUserAsync(this.User);
+
+            var viewModel = new AllUserRecipesViewModel
+            {
+                UserRecipes = this.recipesService.ReturnAllUserRecipes(currentlyLoggedUser.Id),
+            };
+
+            return this.View(viewModel);
+        }
+
         public IActionResult Edit(string recipeId)
         {
             //viewModel
@@ -101,6 +114,11 @@
         {
             // need to have input model
             return this.RedirectToAction(nameof(this.ById), new { id = " " });
+        }
+
+        public IActionResult Delete(string recipeId)
+        {
+            return this.Redirect("/");
         }
     }
 }

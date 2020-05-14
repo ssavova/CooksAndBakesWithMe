@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using CooksAndBakes.Data.Models;
+    using CooksAndBakes.Web.ViewModels.Recipes;
     using Microsoft.AspNetCore.Http;
 
     public interface IRecipesService
@@ -18,5 +19,8 @@
         Recipe ReturnRecipe(string id);
 
         List<string> ReturnImageUrls(string recipeId);
+
+        List<UserRecipesViewModel> ReturnAllUserRecipes(string userId);
+
     }
 }

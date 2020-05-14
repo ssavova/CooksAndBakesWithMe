@@ -1,0 +1,74 @@
+﻿@model CooksAndBakes.Web.ViewModels.Recipes.AllUserRecipesViewModel
+
+<div class="somePadding">
+    <div class="container">
+        <div class="row">
+            @foreach (var recipe in Model.UserRecipes)
+            {
+                <div class="col-xl-4 col-lg-4 col-md-6 mt-4">
+                    <div id="delete-content">
+                        <a href="/Recipes/Delete?recipeId=@recipe.RecipeId " id="delete-recipe-button" >
+                            <i class="fas fa-trash-alt" style="color:black"></i>
+                        </a>
+                    </div>
+                    <div class="single-recipe text-center">
+                        <div class="recipe-thumb">
+                            <img alt="" src="@recipe.ImageUrl">
+                        </div>
+                        <h3 class="recipe-name-style">@recipe.Title</h3>
+                        <span>@recipe.CategoryName</span>
+                        <p class="complexity">
+                            @if (recipe.Level == 1)
+                            {
+                                <img src="~/images/chef.png" class="level" />
+                                <img src="~/images/chef.png" />
+                                <img src="~/images/chef.png" />
+                                <img src="~/images/chef.png" />
+                                <img src="~/images/chef.png" />
+                            }
+                            else if (recipe.Level == 2)
+                            {
+                                <img src="~/images/chef.png" class="level" />
+                                <img src="~/images/chef.png" class="level" />
+                                <img src="~/images/chef.png" />
+                                <img src="~/images/chef.png" />
+                                <img src="~/images/chef.png" />
+                            }
+                            else if (recipe.Level == 3)
+                            {
+                                <img src="~/images/chef.png" class="level" />
+                                <img src="~/images/chef.png" class="level"/>
+                                <img src="~/images/chef.png" class="level"/>
+                                <img src="~/images/chef.png"  />
+                                <img src="~/images/chef.png"  />
+                            }
+                            else if (recipe.Level == 4)
+                            {
+                                <img src="~/images/chef.png"  class="level"/>
+                                <img src="~/images/chef.png"  class="level"/>
+                                <img src="~/images/chef.png"  class="level"/>
+                                <img src="~/images/chef.png"  class="level"/>
+                                <img src="~/images/chef.png"  />
+                            }
+                            else if (recipe.Level == 5)
+                            {
+                                <img src="~/images/chef.png"  class="level"/>
+                                <img src="~/images/chef.png"  class="level"/>
+                                <img src="~/images/chef.png"  class="level"/>
+                                <img src="~/images/chef.png"  class="level"/>
+                                <img src="~/images/chef.png"  class="level"/>
+                            }
+                        </p>
+                        <a class="fullrecipe-button" href="/Recipes/ById?recipeId=@recipe.RecipeId ">View Full Recipe</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts{ 
+<script>
+   
+</script>
+}

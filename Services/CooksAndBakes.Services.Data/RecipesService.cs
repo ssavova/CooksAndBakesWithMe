@@ -9,6 +9,7 @@
     using CloudinaryDotNet.Actions;
     using CooksAndBakes.Data.Common.Repositories;
     using CooksAndBakes.Data.Models;
+    using CooksAndBakes.Web.ViewModels.Recipes;
     using Microsoft.AspNetCore.Http;
 
     public class RecipesService : IRecipesService
@@ -125,6 +126,29 @@
             }
 
             return result;
+        }
+
+        public List<UserRecipesViewModel> ReturnAllUserRecipes(string userId)
+        {
+            var allUserRecipesId = this.userRecipesRepository.All().Where(r => r.UserId == userId).Select(r => r.RecipeId).ToList();
+
+            var allUserRecipes = new List<UserRecipesViewModel>();
+
+            foreach (var rId in allUserRecipesId)
+            {
+                var recipe = this.recipesRepository.All().Where(r => r.Id == rId).Select(nr => new UserRecipesViewModel
+                {
+                    Title = nr.Title,
+                    RecipeId = nr.Id,
+                    CategoryName = nr.Category.Title,
+                    Level = nr.Level,
+                    ImageUrl = nr.RecipeImages.FirstOrDefault().ImageUrl,
+                }).FirstOrDefault();
+
+                allUserRecipes.Add(recipe);
+            }
+
+            return allUserRecipes;
         }
     }
 }
