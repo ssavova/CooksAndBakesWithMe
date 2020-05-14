@@ -90,15 +90,16 @@
             return this.View(viewModel);
         }
 
-        public IActionResult Edit()
+        public IActionResult Edit(string recipeId)
         {
             //viewModel
             return this.View();
         }
 
         [HttpPost]
-        public IActionResult Edit(string inputModel)
+        public IActionResult Edit()
         {
+            // need to have input model
             return this.RedirectToAction(nameof(this.ById), new { id = " " });
         }
     }
