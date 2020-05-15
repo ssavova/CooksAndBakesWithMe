@@ -22,5 +22,6 @@
 
         List<UserRecipesViewModel> ReturnAllUserRecipes(string userId);
 
+        List<RecipesViewModel> ReturnAllRecipes();
     }
 }

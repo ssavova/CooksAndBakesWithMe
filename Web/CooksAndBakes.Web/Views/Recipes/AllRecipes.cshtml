@@ -1,14 +1,16 @@
-﻿@model CooksAndBakes.Web.ViewModels.Recipes.AllUserRecipesViewModel
+﻿@model CooksAndBakes.Web.ViewModels.Recipes.AllRecipesViewModel
+
+@await Component.InvokeAsync("MenuNavBar")
 
 <div class="somePadding">
     <div class="container">
         <div class="row">
-            @foreach (var recipe in Model.UserRecipes)
+            @foreach (var recipe in Model.Recipes)
             {
                 <div class="col-xl-4 col-lg-4 col-md-6 mt-4">
                     <div id="delete-content">
-                        <a href="#" id="delete-recipe-button" onclick="deleteR('@recipe.RecipeId')">
-                            <i class="fas fa-trash-alt" style="color:black"></i>
+                        <a href="#" id="delete-recipe-button" onclick="addR('@recipe.RecipeId')">
+                            <i class="fas fa-plus-square" style="color:black"></i>
                         </a>
                     </div>
                     <div class="single-recipe text-center">
@@ -68,30 +70,7 @@
 </div>
 
 @section Scripts{
-    <script >
-        function deleteR(id) {
-            var json = { recipeId: id };
-            Swal.fire({
-                title: 'Are you sure you want to remove this recipe from your RecipeBook?',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#F3969A',
-                cancelButtonColor: '#78C2AD',
-                confirmButtonText: 'Yes, delete it!'
-            }).then((result) => {
-                if (result.value) {
-                    $.ajax({
-                        url: `/Recipes/Delete?recipeId=${id}`,
-                        type: "POST",
-                        data: JSON.stringify(json),
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        success: function (result) {
-                            
-                        }
-                    });
-                }
-            });
-        }
+    <script>
+
     </script>
 }

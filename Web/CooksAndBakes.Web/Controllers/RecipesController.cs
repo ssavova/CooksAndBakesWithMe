@@ -116,9 +116,21 @@
             return this.RedirectToAction(nameof(this.ById), new { id = " " });
         }
 
-        public IActionResult Delete(string recipeId)
+        public ActionResult Delete(string recipeId)
         {
-            return this.Redirect("/");
+            return this.Redirect("/Recipes/UserRecipes");
         }
+
+        
+        public IActionResult AllRecipes()
+        {
+            var viewModel = new AllRecipesViewModel
+            {
+                Recipes = this.recipesService.ReturnAllRecipes(),
+            };
+
+            return this.View(viewModel);
+        }
+
     }
 }

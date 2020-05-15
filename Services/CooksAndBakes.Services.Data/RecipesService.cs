@@ -150,5 +150,18 @@
 
             return allUserRecipes;
         }
+
+        public List<RecipesViewModel> ReturnAllRecipes()
+        {
+            return this.recipesRepository.All().Select(r => new RecipesViewModel
+            {
+                Title = r.Title,
+                Level = r.Level,
+                CategoryName = r.Category.Title,
+                RecipeId = r.Id,
+                ImageUrl = r.RecipeImages.Select(u => u.ImageUrl).FirstOrDefault(),
+                VoteCount = r.Votes.Count,
+            }).ToList();
+        }
     }
 }

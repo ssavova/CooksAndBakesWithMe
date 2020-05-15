@@ -10,6 +10,11 @@
     {
         public IActionResult Index()
         {
+            if (this.User.Identity.IsAuthenticated)
+            {
+                return this.Redirect("/Recipes/AllRecipes");
+            }
+
             return this.View();
         }
 

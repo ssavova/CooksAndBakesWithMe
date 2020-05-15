@@ -10,6 +10,7 @@
         <link href="~/lib/bootstrap/dist/bootstrap.min.css" rel="stylesheet" asp-append-version="true" />
         <link href="~/css/site.css" rel="stylesheet" asp-append-version="true" />
         <link href="~/lib/fontawesome/css/all.min.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/lib/sweetalert/dist/sweetalert2.min.css" rel="stylesheet" asp-append-version="true"/>
     </environment>
     <environment names="Staging,Production">
         <link href="~/lib/bootstrap/dist/bootstrap.min.css" rel="stylesheet" asp-append-version="true" />
@@ -45,7 +46,7 @@
                     {
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item ">
-                        <a class="nav-link text-dark font-weight-bolder  " asp-area="" asp-controller="Home" asp-action="Index">
+                        <a class="nav-link text-dark font-weight-bolder  " asp-area="" asp-controller="Recipes" asp-action="AllRecipes">
                             <div class="float-left text-center">
                                 <b>Home</b>
                                 <hr />
@@ -109,6 +110,7 @@
         <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js" asp-append-version="true"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/lib/sweetalert/dist/sweetalert2.min.js"></script>
     </environment>
     <environment names="Staging,Production">
         <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
