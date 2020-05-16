@@ -17,6 +17,8 @@
 
         public string CategoryName { get; set; }
 
+        public int VotesCount { get; set; }
+
         public int Level { get; set; }
 
         public string Products { get; set; }

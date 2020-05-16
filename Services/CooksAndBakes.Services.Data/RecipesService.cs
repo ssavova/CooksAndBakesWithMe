@@ -18,17 +18,20 @@
         private readonly IDeletableEntityRepository<Image> imagesRepository;
         private readonly IDeletableEntityRepository<Recipe> recipesRepository;
         private readonly IRepository<UserRecipe> userRecipesRepository;
+        private readonly IDeletableEntityRepository<Vote> votesRepository;
 
         public RecipesService(
             Cloudinary cloudinary,
             IDeletableEntityRepository<Image> imagesRepository,
             IDeletableEntityRepository<Recipe> recipesRepository,
-            IRepository<UserRecipe> userRecipes)
+            IRepository<UserRecipe> userRecipes,
+            IDeletableEntityRepository<Vote> votesRepository)
         {
             this.cloudinary = cloudinary;
             this.imagesRepository = imagesRepository;
             this.recipesRepository = recipesRepository;
             this.userRecipesRepository = userRecipes;
+            this.votesRepository = votesRepository;
         }
 
         public async Task<Image> CreateImage(string recipeId, IFormFile file)

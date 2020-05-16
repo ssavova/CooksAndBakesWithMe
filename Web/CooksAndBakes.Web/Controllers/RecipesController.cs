@@ -1,5 +1,6 @@
 ﻿namespace CooksAndBakes.Web.Controllers
 {
+    using System.Linq;
     using System.Threading.Tasks;
 
     using CooksAndBakes.Data.Models;
@@ -85,6 +86,7 @@
                 Products = new HtmlSanitizer().Sanitize(recipe.Products),
                 Description = new HtmlSanitizer().Sanitize(recipe.Description),
                 ImageUrls = this.recipesService.ReturnImageUrls(recipe.Id),
+                VotesCount = recipe.Votes.Sum(v => (int)v.Type),
             };
 
             return this.View(viewModel);
