@@ -126,7 +126,6 @@
             return this.Redirect("/Recipes/UserRecipes");
         }
 
-        
         public IActionResult AllRecipes()
         {
             var viewModel = new AllRecipesViewModel

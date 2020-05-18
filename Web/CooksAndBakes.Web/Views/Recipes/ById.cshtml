@@ -107,7 +107,7 @@
     </div>
 </div>
 
-@if (Model.Username == this.User.Identity.Name)
+@if (Model.Username == this.User.Identity.)
 {
     <div>
         <a href="/Recipes/Edit?recipeId=@Model.RecipeId" id="customize-edit-recipe">
@@ -116,25 +116,25 @@
     </div>
 }
 
-<div id="vote-content">
-    <div class="text-muted x-large ml-3">
-        <form id="votesForm" method="post"></form>
-        <div>
+
+
+<div id="vote-content" class="container text-center">
+    <p class="style-question">Do you like this recipe ? </p>
+    <form id="votesForm" method="post" ></form>
+    <div class="row outter">
+        <div >
             <a href="#" onclick="sendVote('@Model.RecipeId', true)">
-                <i class="fa fa-thumbs-up"></i>
+                <i class="fa fa-thumbs-up fa-3x mr-3"></i>
             </a>
         </div>
-        <div id="votesCount">@Model.VotesCount</div>
-        <div>
+        <div id="votesCount" class="ml-3 mr-3 font-weight-bold">@Model.VotesCount</div>
+        <div >
             <a href="#" onclick="sendVote('@Model.RecipeId', false)">
-                <i class="fa fa-thumbs-down"></i>
+                <i class="fa fa-thumbs-down fa-3x ml-3"></i>
             </a>
         </div>
     </div>
 </div>
-
- 
-
 
 
 @section Scripts{
@@ -180,6 +180,9 @@
             });
         };
 
+        $('#vote-content').on('click', function (event) {
+            event.preventDefault()
+        });
     </script>
 }
 
