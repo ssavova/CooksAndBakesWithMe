@@ -71,6 +71,22 @@
 
 @section Scripts{
     <script>
+        function addR(recipeId){
+            var json = { recipeId: recipeId };
+            $.ajax({
+                url: "/api/add",
+                type: "POST",
+                data: JSON.stringify(json),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    Swal.fire(data.result);
+                }
+            });
+        };
 
+        $('#delete-recipe-button').on('click', function (event) {
+            event.preventDefault()
+        });
     </script>
 }

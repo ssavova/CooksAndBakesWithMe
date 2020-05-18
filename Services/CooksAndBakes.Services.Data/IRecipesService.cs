@@ -8,6 +8,8 @@
 
     public interface IRecipesService
     {
+        bool CheckWhetherThisUserHasRecipe(string recipeId, string userId);
+
         Task<Image> CreateImage(string recipeId, IFormFile file);
 
         Task<string> CreateRecipe(string title, string categoryId, int level, string products, string description, string userId);

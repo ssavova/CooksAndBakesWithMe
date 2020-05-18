@@ -19,19 +19,22 @@
         private readonly IDeletableEntityRepository<Recipe> recipesRepository;
         private readonly IRepository<UserRecipe> userRecipesRepository;
         private readonly IDeletableEntityRepository<Vote> votesRepository;
+        private readonly IVotesService votesService;
 
         public RecipesService(
             Cloudinary cloudinary,
             IDeletableEntityRepository<Image> imagesRepository,
             IDeletableEntityRepository<Recipe> recipesRepository,
             IRepository<UserRecipe> userRecipes,
-            IDeletableEntityRepository<Vote> votesRepository)
+            IDeletableEntityRepository<Vote> votesRepository,
+            IVotesService votesService)
         {
             this.cloudinary = cloudinary;
             this.imagesRepository = imagesRepository;
             this.recipesRepository = recipesRepository;
             this.userRecipesRepository = userRecipes;
             this.votesRepository = votesRepository;
+            this.votesService = votesService;
         }
 
         public async Task<Image> CreateImage(string recipeId, IFormFile file)
@@ -154,6 +157,11 @@
             return allUserRecipes;
         }
 
+        public bool CheckWhetherThisUserHasRecipe(string recipeId, string userId)
+        {
+            return this.userRecipesRepository.All().Any(ur => ur.RecipeId == recipeId && ur.UserId == userId);
+        }
+
         public List<RecipesViewModel> ReturnAllRecipes()
         {
             return this.recipesRepository.All().Select(r => new RecipesViewModel
@@ -163,7 +171,7 @@
                 CategoryName = r.Category.Title,
                 RecipeId = r.Id,
                 ImageUrl = r.RecipeImages.Select(u => u.ImageUrl).FirstOrDefault(),
-                VoteCount = r.Votes.Count,
+                VoteCount = this.votesService.GetVotes(r.Id),
             }).ToList();
         }
     }
