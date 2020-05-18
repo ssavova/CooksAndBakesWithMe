@@ -13,6 +13,8 @@
 
         public string Username { get; set; }
 
+        public string CurrentlyLoggeduser { get; set; }
+
         public DateTime CreatedOn { get; set; }
 
         public string CategoryName { get; set; }

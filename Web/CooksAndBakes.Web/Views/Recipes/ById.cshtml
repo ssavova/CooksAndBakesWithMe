@@ -107,7 +107,7 @@
     </div>
 </div>
 
-@if (Model.Username == this.User.Identity.)
+@if (Model.Username == Model.CurrentlyLoggeduser)
 {
     <div>
         <a href="/Recipes/Edit?recipeId=@Model.RecipeId" id="customize-edit-recipe">

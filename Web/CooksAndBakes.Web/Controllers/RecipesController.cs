@@ -75,13 +75,15 @@
         public async Task<IActionResult> ById(string recipeId)
         {
             var recipe = this.recipesService.ReturnRecipe(recipeId);
-            var user = await this.userManager.GetUserAsync(this.User);
+            var user = await this.userManager.FindByIdAsync(recipe.UserId);
+            var currentlyLoggedUser = await this.userManager.GetUserAsync(this.User);
 
             var viewModel = new FullRecipeViewModel
             {
                 RecipeId = recipe.Id,
                 UserId = recipe.UserId,
                 Username = user.UserName,
+                CurrentlyLoggeduser = currentlyLoggedUser.UserName,
                 Title = recipe.Title,
                 Level = recipe.Level,
                 CreatedOn = recipe.CreatedOn,
