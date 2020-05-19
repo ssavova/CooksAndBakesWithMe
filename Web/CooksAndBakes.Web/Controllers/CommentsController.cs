@@ -21,9 +21,9 @@
 
         public async Task<IActionResult> Create(CreateCommentInputModel input)
         {
-            var userId = this.userManager.GetUserId(this.User);
+            var user = await this.userManager.GetUserAsync(this.User);
 
-            await this.commentsService.CreateCommentAsync(input.RecipeId, userId, input.Content);
+            await this.commentsService.CreateCommentAsync(input.RecipeId, user.Id, user, input.Content);
 
             return this.RedirectToAction("ById", "Recipes", new { recipeId = input.RecipeId });
         }

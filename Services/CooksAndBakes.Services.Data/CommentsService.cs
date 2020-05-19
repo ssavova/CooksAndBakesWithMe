@@ -23,12 +23,13 @@
             return new HtmlSanitizer().Sanitize(content);
         }
 
-        public async Task CreateCommentAsync(string recipeId, string userId, string content)
+        public async Task CreateCommentAsync(string recipeId, string userId, ApplicationUser user, string content)
         {
             var newComment = new Comment
             {
                 RecipeId = recipeId,
                 UserId = userId,
+                User = user,
                 Content = content,
             };
 
