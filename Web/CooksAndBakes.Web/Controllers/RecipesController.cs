@@ -17,17 +17,20 @@
         private readonly IRecipesService recipesService;
         private readonly UserManager<ApplicationUser> userManager;
         private readonly IVotesService votesService;
+        private readonly ICommentsService commentsService;
 
         public RecipesController(
             ICategoriesService categoriesService,
             IRecipesService recipesService,
             UserManager<ApplicationUser> userManager,
-            IVotesService votesService)
+            IVotesService votesService,
+            ICommentsService commentsService)
         {
             this.categoriesService = categoriesService;
             this.recipesService = recipesService;
             this.userManager = userManager;
             this.votesService = votesService;
+            this.commentsService = commentsService;
         }
 
         [Authorize]
@@ -92,6 +95,7 @@
                 Description = new HtmlSanitizer().Sanitize(recipe.Description),
                 ImageUrls = this.recipesService.ReturnImageUrls(recipe.Id),
                 VotesCount = this.votesService.GetVotes(recipe.Id),
+                Comments = this.commentsService.ReturnCommentsToRecipe(recipe.Id),
             };
 
             return this.View(viewModel);

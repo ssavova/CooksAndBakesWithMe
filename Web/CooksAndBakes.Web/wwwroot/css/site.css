@@ -205,3 +205,9 @@ body {
     justify-content: center;
     /*align-items: flex-end;*/
 }
+
+#comment-question{
+    font-size:medium;
+    color:black;
+    font-family:'Berlin Sans FB';
+}
