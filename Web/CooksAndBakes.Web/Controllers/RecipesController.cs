@@ -127,9 +127,12 @@
             return this.RedirectToAction(nameof(this.ById), new { id = " " });
         }
 
-        public ActionResult Delete(string recipeId)
+        public async Task<IActionResult> Delete(string recipeId)
         {
-            return this.Redirect("/Recipes/UserRecipes");
+            var userId = this.userManager.GetUserId(this.User);
+            await this.recipesService.DeleteRecipe(recipeId, userId);
+
+            return this.RedirectToAction(nameof(this.UserRecipes));
         }
 
         public IActionResult AllRecipes()

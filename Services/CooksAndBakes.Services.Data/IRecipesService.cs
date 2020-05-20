@@ -25,5 +25,7 @@
         List<UserRecipesViewModel> ReturnAllUserRecipes(string userId);
 
         List<RecipesViewModel> ReturnAllRecipes();
+
+        Task DeleteRecipe(string recipeId, string userId);
     }
 }

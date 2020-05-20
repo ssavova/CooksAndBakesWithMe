@@ -174,5 +174,16 @@
                 VoteCount = this.votesService.GetVotes(r.Id),
             }).ToList();
         }
+
+        public async Task DeleteRecipe(string recipeId, string userId)
+        {
+            var searchedPair = this.userRecipesRepository
+                .All()
+                .Where(r => r.RecipeId == recipeId && r.UserId == userId)
+                .FirstOrDefault();
+
+            this.userRecipesRepository.Delete(searchedPair);
+            await this.userRecipesRepository.SaveChangesAsync();
+        }
     }
 }
