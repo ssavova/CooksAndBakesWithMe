@@ -142,17 +142,27 @@ body {
         border: 2px solid #146C53;
     }
 
-.recipe-thumb {
-    max-width: 300px;
-    max-height: 300px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin: auto;
-}
+
+    .recipe-area.single-recipe{
+        margin-bottom:50px;
+    }
+
+    .recipe-thumb {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: auto;
+    }
 
     .recipe-thumb img {
         width: 100%;
-        vertical-align: middle;
+        height:100%;
+    }
+
+    img{
+      vertical-align:middle;
+        border-style:none;
     }
 
 .recipe-name-style {

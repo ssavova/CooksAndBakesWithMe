@@ -1,8 +1,12 @@
 ﻿@model CooksAndBakes.Web.ViewModels.Recipes.AllRecipesViewModel
 
+@{ 
+    this.ViewData["Title"] = "Recipes Catalog";
+}
+
 @await Component.InvokeAsync("MenuNavBar")
 
-<div class="somePadding">
+<div class=" recipe-area somePadding">
     <div class="container">
         <div class="row">
             @foreach (var recipe in Model.Recipes)
@@ -17,7 +21,15 @@
                         <div class="recipe-thumb">
                             <img alt="" src="@recipe.ImageUrl">
                         </div>
-                        <h3 class="recipe-name-style">@recipe.Title</h3>
+                        @if (recipe.Title.Length > 16)
+                        {
+                            
+                            <h3 class="recipe-name-style">@(recipe.Title.Substring(0,16)+"...")</h3>
+                        }
+                        else
+                        {
+                            <h3 class="recipe-name-style">@recipe.Title</h3>
+                        }
                         <span>@recipe.CategoryName</span>
                         <p class="complexity">
                             @if (recipe.Level == 1)

@@ -1,5 +1,9 @@
 ﻿@model CooksAndBakes.Web.ViewModels.Recipes.AllUserRecipesViewModel
 
+@{
+
+}
+
 <div class="somePadding">
     <div class="container">
         <div class="row">
@@ -15,7 +19,15 @@
                         <div class="recipe-thumb">
                             <img alt="" src="@recipe.ImageUrl">
                         </div>
-                        <h3 class="recipe-name-style">@recipe.Title</h3>
+                        @if (recipe.Title.Length > 16)
+                        {
+                            <h3 class="recipe-name-style">@(recipe.Title.Substring(0,16)+ "...")</h3>
+                        }
+                        else
+                        {
+                            <h3 class="recipe-name-style">@recipe.Title</h3>
+                        }
+
                         <span>@recipe.CategoryName</span>
                         <p class="complexity">
                             @if (recipe.Level == 1)
@@ -68,7 +80,7 @@
 </div>
 
 @section Scripts{
-    <script >
+    <script>
         function deleteR(id) {
             Swal.fire({
                 title: 'Are you sure you want to remove this recipe from your RecipeBook?',
