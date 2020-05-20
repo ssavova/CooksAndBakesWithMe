@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CooksAndBakes.Web.ViewModels.Recipes
+﻿namespace CooksAndBakes.Web.ViewModels.Recipes
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
     public class RecipesViewModel
     {
         public string Title { get; set; }

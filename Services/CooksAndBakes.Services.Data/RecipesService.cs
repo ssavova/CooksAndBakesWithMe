@@ -134,9 +134,11 @@
             return result;
         }
 
-        public List<UserRecipesViewModel> ReturnAllUserRecipes(string userId)
+        public List<UserRecipesViewModel> ReturnAllUserRecipes(string userId, int? take = null, int skip = 0)
         {
-            var allUserRecipesId = this.userRecipesRepository.All().Where(r => r.UserId == userId).Select(r => r.RecipeId).ToList();
+            var allUserRecipesId = this.userRecipesRepository.All()
+                .Where(r => r.UserId == userId)
+                .Select(r => r.RecipeId).Skip(skip).ToList();
 
             var allUserRecipes = new List<UserRecipesViewModel>();
 
@@ -149,9 +151,17 @@
                     CategoryName = nr.Category.Title,
                     Level = nr.Level,
                     ImageUrl = nr.RecipeImages.FirstOrDefault().ImageUrl,
+                    CreatedOn = nr.CreatedOn,
                 }).FirstOrDefault();
 
                 allUserRecipes.Add(recipe);
+            }
+
+            allUserRecipes = allUserRecipes.OrderByDescending(t => t.CreatedOn).ToList();
+
+            if (take.HasValue)
+            {
+                allUserRecipes = allUserRecipes.Take(take.Value).ToList();
             }
 
             return allUserRecipes;
@@ -162,9 +172,19 @@
             return this.userRecipesRepository.All().Any(ur => ur.RecipeId == recipeId && ur.UserId == userId);
         }
 
-        public List<RecipesViewModel> ReturnAllRecipes()
+        public List<RecipesViewModel> ReturnAllRecipes(int? take = null, int skip = 0)
         {
-            return this.recipesRepository.All().Select(r => new RecipesViewModel
+            var query = this.recipesRepository
+                .All()
+                .OrderByDescending(r => r.CreatedOn)
+                .Skip(skip);
+
+            if (take.HasValue)
+            {
+                query = query.Take(take.Value);
+            }
+
+            return query.Select(r => new RecipesViewModel
             {
                 Title = r.Title,
                 Level = r.Level,
@@ -184,6 +204,19 @@
 
             this.userRecipesRepository.Delete(searchedPair);
             await this.userRecipesRepository.SaveChangesAsync();
+        }
+
+        public int GetAllRecipesCount(string userId = null)
+        {
+            if (string.IsNullOrWhiteSpace(userId))
+            {
+                return this.recipesRepository.All().Count();
+            }
+            else
+            {
+                return this.recipesRepository.All().Where(r => r.UserId == userId).Count();
+            }
+
         }
     }
 }

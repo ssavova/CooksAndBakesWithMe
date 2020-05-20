@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CooksAndBakes.Web.ViewModels.Recipes
+﻿namespace CooksAndBakes.Web.ViewModels.Recipes
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
     public class UserRecipesViewModel
     {
         public string Title { get; set; }
@@ -15,5 +15,7 @@ namespace CooksAndBakes.Web.ViewModels.Recipes
         public string RecipeId { get; set; }
 
         public string ImageUrl { get; set; }
+
+        public DateTime CreatedOn { get; set; }
     }
 }

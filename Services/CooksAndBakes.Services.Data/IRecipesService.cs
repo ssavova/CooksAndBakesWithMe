@@ -22,10 +22,12 @@
 
         List<string> ReturnImageUrls(string recipeId);
 
-        List<UserRecipesViewModel> ReturnAllUserRecipes(string userId);
+        List<UserRecipesViewModel> ReturnAllUserRecipes(string userId, int? take = null, int skip = 0);
 
-        List<RecipesViewModel> ReturnAllRecipes();
+        List<RecipesViewModel> ReturnAllRecipes(int? take = null, int skip = 0);
 
         Task DeleteRecipe(string recipeId, string userId);
+
+        int GetAllRecipesCount(string userdId = null);
     }
 }

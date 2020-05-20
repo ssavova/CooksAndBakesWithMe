@@ -1,5 +1,6 @@
 ﻿namespace CooksAndBakes.Web.Controllers
 {
+    using System;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -13,6 +14,8 @@
 
     public class RecipesController : BaseController
     {
+        private const int RecipesPerPage = 9;
+
         private readonly ICategoriesService categoriesService;
         private readonly IRecipesService recipesService;
         private readonly UserManager<ApplicationUser> userManager;
@@ -102,16 +105,28 @@
         }
 
         [Authorize]
-        public async Task<IActionResult> UserRecipes()
+        public async Task<IActionResult> UserRecipes(int page = 1)
         {
             var currentlyLoggedUser = await this.userManager.GetUserAsync(this.User);
 
             var viewModel = new AllUserRecipesViewModel
             {
-                UserRecipes = this.recipesService.ReturnAllUserRecipes(currentlyLoggedUser.Id),
+                UserRecipes = this.recipesService.ReturnAllUserRecipes(currentlyLoggedUser.Id, RecipesPerPage, (page - 1) * RecipesPerPage),
             };
 
+            var count = this.recipesService.GetAllRecipesCount(currentlyLoggedUser.Id);
+
+            viewModel.PagesCount = (int)Math.Ceiling((double)count / RecipesPerPage);
+
+            if(viewModel.PagesCount == 0)
+            {
+                viewModel.PagesCount = 1;
+            }
+
+            viewModel.CurrentPage = page;
+
             return this.View(viewModel);
+
         }
 
         public IActionResult Edit(string recipeId)
@@ -135,12 +150,22 @@
             return this.RedirectToAction(nameof(this.UserRecipes));
         }
 
-        public IActionResult AllRecipes()
+        public IActionResult AllRecipes(int page = 1)
         {
             var viewModel = new AllRecipesViewModel
             {
-                Recipes = this.recipesService.ReturnAllRecipes(),
+                Recipes = this.recipesService.ReturnAllRecipes(RecipesPerPage, (page - 1) * RecipesPerPage),
             };
+
+            var count = this.recipesService.GetAllRecipesCount();
+            viewModel.PagesCount = (int)Math.Ceiling((double)count / RecipesPerPage);
+
+            if (viewModel.PagesCount == 0)
+            {
+                viewModel.PagesCount = 1;
+            }
+
+            viewModel.CurrentPage = page;
 
             return this.View(viewModel);
         }
