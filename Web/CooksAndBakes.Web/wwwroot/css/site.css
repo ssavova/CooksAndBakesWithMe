@@ -221,3 +221,10 @@ body {
     color:black;
     font-family:'Berlin Sans FB';
 }
+
+.no-recipe-in-category{
+    font-family:'Segoe Print';
+    font-size:40px;
+    text-align:center;
+    color:black;
+}

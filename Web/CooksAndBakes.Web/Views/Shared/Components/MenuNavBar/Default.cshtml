@@ -12,7 +12,7 @@
                 @foreach (var name in Model.Categories)
                 {
                     <li class="nav-item ">
-                        <a id="categoryMenu" class="nav-link text-dark font-weight-bold " href="Categories/GetAll?Id=@name.Id">@name.Title</a>
+                        <a id="categoryMenu" class="nav-link text-dark font-weight-bold " href="/Categories/GetAll?Id=@name.Id">@name.Title</a>
                     </li>
                 }
             </ul>
