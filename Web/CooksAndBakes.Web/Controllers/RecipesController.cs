@@ -118,7 +118,7 @@
 
             viewModel.PagesCount = (int)Math.Ceiling((double)count / RecipesPerPage);
 
-            if(viewModel.PagesCount == 0)
+            if (viewModel.PagesCount == 0)
             {
                 viewModel.PagesCount = 1;
             }
@@ -153,10 +153,29 @@
         }
 
         [HttpPost]
-        public IActionResult Edit(EditRecipeInputModel input)
+        public async Task<IActionResult> Edit(EditRecipeInputModel input)
         {
-            // need to have input model
-            return this.RedirectToAction(nameof(this.ById), new { id = " " });
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(input);
+            }
+
+            var updatedRecipe = this.recipesService.ReturnRecipe(input.RecipeId);
+
+            await this.recipesService.EditRecipe(input.RecipeId, input.Title, input.CategoryId, input.Level, input.Products, input.Description);
+
+            if (input.RecipeImages.Count() != 0)
+            {
+                await this.recipesService.DeleteAllCurrentImagesOfRecipe(input.RecipeId);
+
+                foreach (var image in input.RecipeImages)
+                {
+                    var newImage = await this.recipesService.CreateImage(input.RecipeId, image);
+                    updatedRecipe.RecipeImages.Add(newImage);
+                }
+            }
+
+            return this.RedirectToAction(nameof(this.ById), new { id = input.RecipeId });
         }
 
         public async Task<IActionResult> Delete(string recipeId)

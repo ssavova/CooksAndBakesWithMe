@@ -29,5 +29,9 @@
         Task DeleteRecipe(string recipeId, string userId);
 
         int GetAllRecipesCount(string userdId = null);
+
+        Task DeleteAllCurrentImagesOfRecipe(string recipeId);
+
+        Task EditRecipe(string recipeId, string title, string categoryId, int level, string products, string description);
     }
 }

@@ -216,7 +216,34 @@
             {
                 return this.recipesRepository.All().Where(r => r.UserId == userId).Count();
             }
-
         }
+
+        public async Task EditRecipe(string recipeId, string title, string categoryId, int level, string products, string description)
+        {
+            var editrecipe = this.ReturnRecipe(recipeId);
+            editrecipe.Title = title;
+            editrecipe.CategoryId = categoryId;
+            editrecipe.Level = level;
+            editrecipe.Products = products;
+            editrecipe.Description = description;
+
+            this.recipesRepository.Update(editrecipe);
+            await this.recipesRepository.SaveChangesAsync();
+        }
+
+        public async Task DeleteAllCurrentImagesOfRecipe(string recipeId)
+        {
+            var collectionRecipesImages = this.imagesRepository.All().Where(i => i.RecipeId == recipeId).ToList();
+
+            foreach (var img in collectionRecipesImages)
+            {
+                img.IsDeleted = true;
+                img.RecipeId = null;
+                this.imagesRepository.Update(img);
+            }
+
+            await this.imagesRepository.SaveChangesAsync();
+        }
+
     }
 }
