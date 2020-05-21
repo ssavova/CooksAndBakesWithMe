@@ -131,12 +131,29 @@
 
         public IActionResult Edit(string recipeId)
         {
-            //viewModel
-            return this.View();
+            var categoriesDropDown = this.categoriesService.GetAll();
+
+            var orderDropDown = this.categoriesService.OrderDropDown(categoriesDropDown, "Starters", "Dressings", "Soups", "Salads", "Main Courses", "Pizza", "Pasta", "Pastry", "Desserts", "Cocktails");
+
+            var searchedRecipe = this.recipesService.ReturnRecipe(recipeId);
+
+            var recipeViewModel = new EditRecipeViewModel
+            {
+                RecipeId = searchedRecipe.Id,
+                Title = searchedRecipe.Title,
+                CategoryId = searchedRecipe.CategoryId,
+                Categories = orderDropDown,
+                Level = searchedRecipe.Level,
+                Products = new HtmlSanitizer().Sanitize(searchedRecipe.Products),
+                Description = new HtmlSanitizer().Sanitize(searchedRecipe.Description),
+                ImageUrls = this.recipesService.ReturnImageUrls(searchedRecipe.Id),
+            };
+
+            return this.View(recipeViewModel);
         }
 
         [HttpPost]
-        public IActionResult Edit()
+        public IActionResult Edit(EditRecipeInputModel input)
         {
             // need to have input model
             return this.RedirectToAction(nameof(this.ById), new { id = " " });
