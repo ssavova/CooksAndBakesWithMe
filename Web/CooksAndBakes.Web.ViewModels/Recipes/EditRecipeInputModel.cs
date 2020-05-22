@@ -9,5 +9,7 @@
     public class EditRecipeInputModel : RecipeCreateInputModel
     {
         public string RecipeId { get; set; }
+
+        public override IEnumerable<IFormFile> RecipeImages { get; set; }
     }
 }

@@ -164,7 +164,7 @@
 
             await this.recipesService.EditRecipe(input.RecipeId, input.Title, input.CategoryId, input.Level, input.Products, input.Description);
 
-            if (input.RecipeImages.Count() != 0)
+            if (input.RecipeImages != null)
             {
                 await this.recipesService.DeleteAllCurrentImagesOfRecipe(input.RecipeId);
 
@@ -175,7 +175,7 @@
                 }
             }
 
-            return this.RedirectToAction(nameof(this.ById), new { id = input.RecipeId });
+            return this.RedirectToAction(nameof(this.ById), new { recipeId = input.RecipeId });
         }
 
         public async Task<IActionResult> Delete(string recipeId)
