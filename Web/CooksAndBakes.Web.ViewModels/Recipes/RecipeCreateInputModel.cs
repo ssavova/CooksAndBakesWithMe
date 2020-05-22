@@ -1,5 +1,6 @@
 ﻿namespace CooksAndBakes.Web.ViewModels.Recipes
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
@@ -26,8 +27,8 @@
         public string Description { get; set; }
 
         [Display(Name ="Images")]
-        
-        public virtual IEnumerable<IFormFile> RecipeImages { get; set; }
+        [Required]
+        public IEnumerable<IFormFile> RecipeImages { get; set; }
 
         public IEnumerable<CategoryDropDownViewModel> Categories { get; set; }
     }

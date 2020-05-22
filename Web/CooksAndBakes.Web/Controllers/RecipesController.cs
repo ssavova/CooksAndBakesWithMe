@@ -137,7 +137,7 @@
 
             var searchedRecipe = this.recipesService.ReturnRecipe(recipeId);
 
-            var recipeViewModel = new EditRecipeViewModel
+            var recipeViewModel = new EditRecipeInputModel
             {
                 RecipeId = searchedRecipe.Id,
                 Title = searchedRecipe.Title,

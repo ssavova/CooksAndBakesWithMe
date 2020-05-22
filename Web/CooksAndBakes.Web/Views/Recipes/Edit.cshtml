@@ -1,4 +1,4 @@
-﻿@model CooksAndBakes.Web.ViewModels.Recipes.EditRecipeViewModel
+﻿@model CooksAndBakes.Web.ViewModels.Recipes.EditRecipeInputModel
 
 @{
     this.ViewData["Title"] = "Edit Recipe";
@@ -46,6 +46,7 @@
     </div>
     <form class="col-6 col-lg-9" method="post" asp-controller="Recipes" asp-action="Edit" enctype="multipart/form-data">
         <input hidden asp-for="RecipeId" />
+        <input hidden asp-for="Categories" value="@Model.Categories"/>
         <div class="form-group">
             <label asp-for="Title"></label>
             <input asp-for="Title" class="form-control" id="name-input" /> 

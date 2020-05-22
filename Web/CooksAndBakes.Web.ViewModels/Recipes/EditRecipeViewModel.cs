@@ -10,7 +10,5 @@
         public string RecipeId { get; set; }
 
         public ICollection<string> ImageUrls { get; set; }
-
-        public override IEnumerable<IFormFile> RecipeImages { get; set; }
     }
 }
